@@ -1,23 +1,23 @@
 name: Stake
 on:
   schedule:
-    - cron: '*/10 * * * *'
+    - cron: "*/10 * * * *"
   workflow_dispatch: {}
   push:
     paths:
-      - '**.py'
+      - "**.py"
 jobs:
-  publish:
+  stake:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
         with:
-          python-version: '3.9.5'
+          python-version: "3.9.5"
       - name: Install Poetry
         uses: abatilo/actions-poetry@v2.1.2
         with:
-          poetry-version: '1.1.6'
+          poetry-version: "1.1.6"
       - name: Set up Poetry virtualenv
         run: poetry env use python3.9.5
       - name: Install dependency libraries
