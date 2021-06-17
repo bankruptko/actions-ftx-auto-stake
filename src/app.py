@@ -1,6 +1,7 @@
 import os
-import ftx
 from pprint import pprint
+
+import ftx
 
 
 def stake(self: ftx.FtxClient, coin: str, size: float) -> dict:
@@ -16,13 +17,20 @@ setattr(
 
 api_key = os.getenv("FTX_API_KEY")
 api_secret = os.getenv("FTX_API_SECRET")
-stake_symbols = os.getenv(
-    "FTX_STAKE_SYMBOLS",
-    ["SRM", "SRM_LOCKED", "MSRM", "MSRM_LOCKED", "SOL", "UBXT", "FIDA", "RAY"],
-)
+stake_symbols_str = os.getenv("FTX_STAKE_SYMBOLS", "")
 
-if isinstance(stake_symbols, str):
-    stake_symbols = stake_symbols.split(",")
+stake_symbols = [
+    "SRM",
+    "SRM_LOCKED",
+    "MSRM",
+    "MSRM_LOCKED",
+    "SOL",
+    "UBXT",
+    "FIDA",
+    "RAY",
+]
+if stake_symbols_str != "":
+    stake_symbols = stake_symbols_str.split(",")
 
 client = ftx.FtxClient(api_key=api_key, api_secret=api_secret)
 
