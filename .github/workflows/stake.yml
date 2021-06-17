@@ -23,4 +23,8 @@ jobs:
       - name: Install dependency libraries
         run: poetry install
       - name: Stake
+        env:
+          FTX_API_KEY: ${{ secrets.FTX_API_KEY }}
+          FTX_API_SECRET: ${{ secrets.FTX_API_SECRET }}
+          FTX_STAKE_SYMBOLS: ${{ secrets.FTX_STAKE_SYMBOLS }}
         run: poetry run python ./src/app.py
