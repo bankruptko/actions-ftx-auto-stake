@@ -19,7 +19,7 @@ jobs:
         with:
           poetry-version: "1.1.6"
       - name: Set up Poetry virtualenv
-        run: poetry env use python3.9.5
+        run: poetry env use python3.9
       - name: Install dependency libraries
         run: poetry install
       - name: Stake
